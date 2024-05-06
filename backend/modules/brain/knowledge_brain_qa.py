@@ -187,6 +187,7 @@ class KnowledgeBrainQA(BaseModel, QAInterface):
             max_tokens=self.max_tokens,
             **kwargs,
         )
+        self.model = self.brain.model if self.brain.model else self.model
 
     @property
     def prompt_to_use(self):

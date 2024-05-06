@@ -42,7 +42,8 @@ def init_vector_store(user_id: UUID) -> CustomSupabaseVectorStore:
     embeddings = None
     if brain_settings.ollama_api_base_url:
         embeddings = OllamaEmbeddings(
-            base_url=brain_settings.ollama_api_base_url
+            base_url=brain_settings.ollama_api_base_url,
+            model=brain_settings.ollama_base_model
         )  # pyright: ignore reportPrivateUsage=none
     else:
         embeddings = OpenAIEmbeddings()

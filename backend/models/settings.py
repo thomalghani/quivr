@@ -113,6 +113,8 @@ class BrainSettings(BaseSettings):
     ollama_api_base_url: str = None
     langfuse_public_key: str = None
     langfuse_secret_key: str = None
+    ollama_base_model: str = None
+
 
 
 class ResendSettings(BaseSettings):
@@ -138,6 +140,7 @@ def get_embeddings():
     if settings.ollama_api_base_url:
         embeddings = OllamaEmbeddings(
             base_url=settings.ollama_api_base_url,
+            model=settings.ollama_base_model
         )  # pyright: ignore reportPrivateUsage=none
     else:
         embeddings = OpenAIEmbeddings()  # pyright: ignore reportPrivateUsage=none

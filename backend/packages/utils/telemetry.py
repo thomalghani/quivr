@@ -23,6 +23,9 @@ def generate_machine_key():
 
 
 def send_telemetry(event_name: str, event_data: dict):
+
+    if os.getenv("TELEMETRY_ENABLED", "false").lower() == "false":
+        return
     # Generate a unique machine key
     machine_key = generate_machine_key()
 

@@ -1,4 +1,4 @@
-alter table "public"."brains" add column "meaning" vector;
+alter table "public"."brains" add column "meaning" vector(4096);
 
 alter table "public"."brains" alter column "description" set default 'This needs to be changed'::text;
 
